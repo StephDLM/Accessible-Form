@@ -36,8 +36,8 @@ var clicked = e.target;
   //    - the `getAttribute` method will be helpful here
 var clickedType = clicked.getAttribute('data-type');
   // 3) Log out the two variables you just created to confirm their values
-  // console.log(clicked);
-  // console.log(clickedType);
+  console.log(clicked);
+  console.log(clickedType);
 
   // 4) Loop over the checkbox input elements
     // 5) In the loop, create a variable named `checkboxType` to store the `data-type` attribute of the `checkboxes[i]` in the loop's current iteration = `checkboxes[i].getAttribute('data-type');`

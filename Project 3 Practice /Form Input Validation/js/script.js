@@ -69,7 +69,8 @@ var emailIsValid = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);
 
 /* Helper function to validate language section */
 const languageValidator = () => {
-
+  const languageSectionIsValid = languageTotal > 0;
+  console.log(`Language section validation test evaluates to ${languageSectionIsValid}`)
   // 1. Create a variable named `languageSectionIsValid` to store the test value for this section, which is the total languages total value.
     // Since the language section's requirement is just that at least one language must be selected:
     // `const languageSectionIsValid = languageTotal > 0;`.
@@ -77,7 +78,7 @@ const languageValidator = () => {
     // Log out something like this: `console.log(`Language section validation test evaluates to ${languageSectionIsValid}`);`.
 
   // 2. Lastly, return `languageSectionIsValid`.
-
+  return languageSectionIsValid;
 }
 
 
@@ -106,9 +107,21 @@ form.addEventListener('submit', e => {
   // 1. Create an if statement
     // If `(!nameValidator())` call `e.preventDefault();` 
       // And log out a message saying this particular validator prevented submission
-  
+  if (!nameValidator()){
+    console.log('invalid name prevented default')
+     e.preventDefault();
+  }
   // 2. Repeat the above step for the rest of your validation functions
+  if (!emailValidator()){
+    console.log('invalid email prevented default')
 
+     e.preventDefault();
+  }
+  if (!languageValidator()){
+    console.log('invalid language prevented default')
+
+     e.preventDefault();
+  }
 
   // And feel free to comment out or delete any log statements from the validation functions above
 

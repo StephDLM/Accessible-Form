@@ -26,6 +26,11 @@ document.querySelector('#languages').addEventListener('change', e => {
 // YOUR CODE GOES HERE!!! Do the steps below to complete this challenge
 
 // 1. Create a function named `validationPass` and give it one parameter: `element`
+function validationPass (element){
+  parentElement.className('valid');
+  remove.className('not-valid');
+}
+validationPass();
   // Inside the function:
     // 1a. Give the `element` parameter's `parentElement` the className 'valid'
     // 1b. Remove from the `element` parameter's `parentElement` the className 'not-valid`
@@ -33,6 +38,11 @@ document.querySelector('#languages').addEventListener('change', e => {
 
 
 // 2. Create a function named `validationFail` and give it one parameter: `element`
+function validationFail (element){
+  parentElement.className = 'not-valid'
+  parentElement.remove('.valid')
+  // Element.lastElementChild.
+}
   // Inside the function:
     // 2a. Give the `element` parameter's `parentElement` the className 'not-valid'
     // 2b. Remove from the `element` parameter's `parentElement` the className 'valid`
