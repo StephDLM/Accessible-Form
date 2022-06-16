@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Selects and Options</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+
+    <header>
+      <div class="header-heading">
+        <div>
+          <img src="img/frogprint.png" alt="Treehouse logo" class="logo">
+          <h1>Selects and Options</h1>
+        </div>
+        <div class="info">
+          <p>FSJS Techdegree</p>
+          <p>Project Warm Up</p>
+        </div>
+      </div>
+    </header>
+
+    <form action="index.html" method="post">
+      <fieldset class="shirt-selection">
+        <legend><span>Mike the Frog's T Shirts</span></legend>  
+        <ul id="shirt-list" class="shirt-list">
+          <li class="item"><a href="#"><img class="shirt-image" src="img/mike-shirt-yellow.jpg" alt="Yellow shirt"></a></li>
+          <li class="item"><a href="#"><img class="shirt-image" src="img/mike-shirt-blue.jpg" alt="Blue shirt"></a></li>
+          <li class="item"><a href="#"><img class="shirt-image" src="img/mike-shirt-orange.jpg" alt="Orange shirt"></a></li>
+          <li class="item"><a href="#"><img class="shirt-image" src="img/mike-shirt-grey.jpg" alt="Grey shirt"></a></li>
+        </ul>
+        
+        <div class="form-box">
+          <select id="shirt-select-element" name="shirt">
+            <option value="Select a shirt" hidden>Choose your favorite</option>
+            <option value="Yellow shirt">Yellow shirt</option>
+            <option value="Blue shirt">Blue shirt</option>
+            <option value="Orange shirt">Orange shirt</option>
+            <option value="Grey shirt">Grey shirt</option>
+          </select>
+
+          <div class="help-container">
+            <p>If you run into trouble or have questions, be sure to reach out in <a href="https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat" target="_blank">Slack <img src="img/fsjs.png" alt="FSJS Slack logo"></a></p>
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+    
+    <script src="js/script.js"></script>
+  </body>
+</html>
