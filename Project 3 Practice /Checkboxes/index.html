@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Checkboxes</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+
+    <header>
+      <div class="header-heading">
+        <div>
+          <img src="img/frogprint.png" alt="Treehouse logo" class="logo">
+          <h1>Checkboxes</h1>
+        </div>
+        <div class="info">
+          <p>FSJS Techdegree</p>
+          <p>Project Warm Up</p>
+        </div>
+      </div>
+    </header>
+
+    <form action="#" method="get" id="form" class="form">
+      <fieldset class="super-stats">
+        <legend>Choose One Power & One Color Option</legend>
+        <div class="form-section">
+            <h2>Super Powers</h2>
+            <label for="flight">
+              <input type="checkbox" id="flight" name="power" data-type="power" value="Flight"> 🚀 Flight
+            </label>
+            <label for="invisibility">
+              <input type="checkbox" id="invisibility" name="power" data-type="power" value="Invisibility"> 💫 Invisibility
+            </label>
+            <label for="strength">
+              <input type="checkbox" id="strength" name="power" data-type="power" value="Super Strength"> 💪 Super Strength
+            </label>
+            <label for="speed">
+              <input type="checkbox" id="speed" name="power" data-type="power" value="Super Speed"> ⚡️ Super Speed
+            </label>
+            <label for="healing">
+              <input type="checkbox" id="healing" name="power" data-type="power" value="Super Healing"> 🩹 Super Healing
+            </label>
+            <label for="telepathy">
+              <input type="checkbox" id="telepathy" name="power" data-type="power" value="Telepathy"> 🧠 Telepathy
+            </label>
+        </div>
+        <div class="form-section colors">
+            <h2>Super Suit Colors</h2>
+            <label for="red-black">
+              <input type="checkbox" id="red-black" name="costume" data-type="costume" value="Red & Black"> <span></span> Red & Black
+            </label>
+            <label for="red-blue">
+              <input type="checkbox" id="red-blue" name="costume" data-type="costume" value="Red & Blue"> <span></span> Red & Blue
+            </label>
+            <label for="green-purple">
+              <input type="checkbox" id="green-purple" name="costume" data-type="costume" value="Green & Purple"> <span></span> Green & Purple
+            </label>
+            <label for="green-black">
+              <input type="checkbox" id="green-black" name="costume" data-type="costume" value="Green & Black"> <span></span> Green & Black
+            </label>
+            <label for="black-purple">
+              <input type="checkbox" id="black-purple" name="costume" data-type="costume" value="Black & Purple"> <span></span> Black & Purple
+            </label>
+            <label for="yellow-black">
+              <input type="checkbox" id="yellow-black" name="costume" data-type="costume" value="Yellow & black"> <span></span> Yellow & black
+            </label>
+        </div>
+      </fieldset>
+      <div class="help-container">
+        <p>If you run into trouble or have questions, be sure to reach out in <a href="https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat" target="_blank">Slack <img src="img/fsjs.png" alt="FSJS Slack logo"></a></p>
+      </div>
+    </form>
+    <script src="js/script.js"></script>
+  </body>
+</html>

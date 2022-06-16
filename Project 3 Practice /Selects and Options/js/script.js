@@ -55,16 +55,17 @@ shirtSelectElement.addEventListener('change', e => {
         console.log(shirtAltImage);
         console.log(shirtChosen);
           if (shirtAltImage === shirtChosen) {
-            shirtAltImage.classList.add(shirtChosen[i]);
+            shirtImageElements[i].classList.add('chosen');
           } else {
-            shirtAltImage.classList.remove(shirtChosen[i]);
+            shirtImageElements[i].classList.remove('chosen');
           }
-      };
 
+      };
     // 2d) Log out the two variables, refresh the page, and select a new shirt to confirm their values
     // 2e) Still inside the loop, create an if/else statement 
     // 2f) If the two variables you just created are equal, use the `.classList.add()` method to add the 'chosen' className to the img element
     // 2g) Else use the `.classList.remove()` method to remove the 'chosen' className from the from the img element
 
-  console.log("The select element's change event listener is functional!");
-});
+        console.log("The select element's change event listener is functional!");
+    });
+
