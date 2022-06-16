@@ -27,11 +27,14 @@ document.querySelector('#languages').addEventListener('change', e => {
 
 /* Helper function to validate name input */
 const nameValidator = () => {
+  var nameValue = nameElement.value;
+  //console.log(nameValue);
 
   // 1. Create a variable named `nameValue` to store the `.value` property of the `nameElement` input and log the variable out to the console — console.log("Name value is: ", `"${nameValue}"`);
     // To see the result of this function's log statements, call this `nameValidator()` function in the `submit` handler below, 
     // and then save the file, refresh the page in the browser and click the form's submit button.
-
+  const nameIsValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);
+  console.log(nameIsValid);
   // 2. Create a variable named `nameIsValid` to store the test value for this input.
     // Since the name field's requirement is that it can't be blank, that should look something like this:
     // `const nameIsValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);`.
@@ -39,6 +42,7 @@ const nameValidator = () => {
     // Log out something like this: console.log(`Name validation test on "${nameValue}" evaluates to ${nameIsValid}`);.
 
   // 3. Lastly, return `nameIsValid`.
+  return nameIsValid;
 
 }
 
@@ -47,7 +51,9 @@ const nameValidator = () => {
 const emailValidator = () => {
 
   // 1. Create a variable named `emailValue` to store the `.value` property of the `emailAddress` input and log the variable out to the console — console.log("Email value is: ", `"${emailValue}"`);
-
+var emailValue = email.value;
+console.log(emailValue);
+var emailIsValid = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);
   // 2. Create a variable named `emailIsValid` to store the test value for this input.
     // Since the email field's requirement is that it should be a validly formatted email address with a `.com` TLD, 
     // the variable should look something like this:
@@ -57,7 +63,7 @@ const emailValidator = () => {
     // Log out something like this: console.log(`Email validation test on "${emailValue}" evaluates to ${emailIsValid}`);.
 
   // 3. Lastly, return `emailIsValid`.
-
+  return emailIsValid;
 }
 
 
@@ -78,6 +84,7 @@ const languageValidator = () => {
 
 /* Submit listener on the form element */
 form.addEventListener('submit', e => {
+  nameValidator();
 
   // IMPORTANT NOTE: Firing the submit event will refresh the page and reset the form, erasing your log statements.
     // This can be prevented by calling `e.preventDefault()` here in this submit handler, or
@@ -93,7 +100,7 @@ form.addEventListener('submit', e => {
 
 
   // Preventing form submission for testing purposes. Remove or comment out as needed and before completion
-  e.preventDefault();
+  // e.preventDefault();
 
 
   // 1. Create an if statement
@@ -108,6 +115,8 @@ form.addEventListener('submit', e => {
 
   // Submit handler test log - Feel free to delete this or comment it out
   console.log('Submit handler is functional!');
+
+
 });
 
 

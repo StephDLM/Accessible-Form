@@ -31,21 +31,30 @@ document.querySelector('.super-stats').addEventListener('change', e => {
 
   // 1) Create a variable named clicked to store the checkbox input that was just clicked
   //    - `e.target` will be helpful here
-var clicked = e.target.value;
+var clicked = e.target;
   // 2) Create a variable named clickedType to store the `data-type` attribute of the checkbox that was just clicked
   //    - the `getAttribute` method will be helpful here
-var clickedType = checkboxes.getAttribute('.data-types')
+var clickedType = clicked.getAttribute('data-type');
   // 3) Log out the two variables you just created to confirm their values
-  console.log(clicked);
-  console.log(clickedType);
+  // console.log(clicked);
+  // console.log(clickedType);
 
   // 4) Loop over the checkbox input elements
     // 5) In the loop, create a variable named `checkboxType` to store the `data-type` attribute of the `checkboxes[i]` in the loop's current iteration = `checkboxes[i].getAttribute('data-type');`
-    
+    for (let i=0; i<checkboxes.length; i++){
+      var checkboxType = checkboxes[i].getAttribute('data-type');
+      if ( checkboxType === clickedType && clicked !== checkboxes[i] ){
+        if (clicked.checked) {
+          checkboxes[i].disabled = true;
+        } else {
+          checkboxes[i].disabled = false;
+        }
+      }
+    };
     // 6) Create an `if` statement to check which items to disable/enable.  The if statement needs two conditions: 
-    //    - We only want to disable/enable the item if it has the same 'data-ype' as the item that was checked/unchecked, 
+    //    - We only want to disable/enable the item if it has the same 'data-type' as the item that was checked/unchecked, 
     //    - So check if the checkboxType and the clickedType variables equal
-    //    A2.
+    //    A2. - dont understand this part
     //    - We don't want to disable/enable the checkbox that was just clicked
     //    - So check that the clicked checkbox is not the checkbox in the loop's current iteration
     //    - These two conditions will look something like this - `(clickedType === checkboxType && clicked !== checkboxes[i])`
