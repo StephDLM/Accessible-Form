@@ -27,8 +27,12 @@ document.querySelector('#languages').addEventListener('change', e => {
 
 // 1. Create a function named `validationPass` and give it one parameter: `element`
 function validationPass (element){
-  parentElement.className('valid');
-  remove.className('not-valid');
+  // const element = document.getElementById('element');
+  let parameterParent= element.parentElement
+  // console.log(element.parentElement);
+  parameterParent.classList('valid');
+  parameterParent.classList.remove('not-valid');
+  parameterParent.lastElementChild.hidden = true; 
 }
 validationPass();
   // Inside the function:
@@ -39,8 +43,8 @@ validationPass();
 
 // 2. Create a function named `validationFail` and give it one parameter: `element`
 function validationFail (element){
-  parentElement.className = 'not-valid'
-  parentElement.remove('.valid')
+  element.parentElement.className('not-valid');
+  element.parentElement.remove('valid')
   // Element.lastElementChild.
 }
   // Inside the function:
