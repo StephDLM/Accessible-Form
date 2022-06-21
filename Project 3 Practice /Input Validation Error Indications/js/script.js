@@ -24,17 +24,18 @@ document.querySelector('#languages').addEventListener('change', e => {
 
 
 // YOUR CODE GOES HERE!!! Do the steps below to complete this challenge
+// const element = document.getElementById('element');
+
 
 // 1. Create a function named `validationPass` and give it one parameter: `element`
 function validationPass (element){
-  // const element = document.getElementById('element');
-  let parameterParent= element.parentElement
   // console.log(element.parentElement);
-  parameterParent.classList('valid');
+  let parameterParent= element.parentElement
+  parameterParent.classList.add('valid');
   parameterParent.classList.remove('not-valid');
   parameterParent.lastElementChild.hidden = true; 
 }
-validationPass();
+// validationPass(element);
   // Inside the function:
     // 1a. Give the `element` parameter's `parentElement` the className 'valid'
     // 1b. Remove from the `element` parameter's `parentElement` the className 'not-valid`
@@ -43,10 +44,11 @@ validationPass();
 
 // 2. Create a function named `validationFail` and give it one parameter: `element`
 function validationFail (element){
-  element.parentElement.className('not-valid');
-  element.parentElement.remove('valid')
-  // Element.lastElementChild.
-}
+  let parameterParent= element.parentElement
+  parameterParent.classList.add('not-valid');
+  parameterParent.classList.remove('valid');
+  parameterParent.lastElementChild.display = "none";
+};
   // Inside the function:
     // 2a. Give the `element` parameter's `parentElement` the className 'not-valid'
     // 2b. Remove from the `element` parameter's `parentElement` the className 'valid`
@@ -66,10 +68,13 @@ const nameValidator = () => {
   // YOUR CODE GOES HERE!!!
 
   // 3a. Create an if/else statement.
+  if (nameIsValid == true){
+    validationPass(nameElement);
+  } else{
+    validationFail(nameElement);
+  };
     // If `nameIsValid` equals true, call the `validationPass` function and pass it the `nameElement` variable from above as an argument
     // Else call the `validationFail` function and pass it the `nameElement` variable from above as an argument
-
-  
   return nameIsValid;
 }
 
@@ -81,12 +86,16 @@ const emailValidator = () => {
   const emailIsValid = /^[^@]+@[^@.]+\.[a-z]+$/i.test(email.value);
 
   // YOUR CODE GOES HERE!!!
+  if (emailIsValid == true){
+    validationPass(email);
+  } else{
+    validationFail(email);
+  };
 
   // 3b. Create an if/else statement.
     // If `emailIsValid` equals true, call the `validationPass` function and pass it the `email` variable from above as an argument
     // Else call the `validationFail` function and pass it the `email` variable from above as an argument
 
-  
   return emailIsValid;
 }
 
@@ -98,7 +107,11 @@ const languageValidator = () => {
   const languageSectionIsValid = languageTotal > 0;
 
   // YOUR CODE GOES HERE!!!
-
+  if (languageSectionIsValid == true){
+    validationPass(languagesBox);
+  } else{
+    validationFail(languagesBox);
+  };
   // 3c. Create an if/else statement.
     // If `languageSectionIsValid` equals true, call the `validationPass` function and pass it the `languagesBox` variable from above as an argument
     // Else call the `validationFail` function and pass it the `languagesBox` variable from above as an argument
@@ -121,6 +134,9 @@ const languageValidator = () => {
 
 /* Submit listener on the form element */
 form.addEventListener('submit', e => {
+  nameElement.addEventListener('keyup', nameValidator);
+  email.addEventListener('keyup', emailValidator);
+  languagesBox.addEventListener('keyup', languageSectionIsValid);
 
   // IMPORTANT NOTE: Firing the submit event will refresh the page and reset the form, erasing your log statements.
     // This can be prevented by calling `e.preventDefault()` here in this submit handler, or
