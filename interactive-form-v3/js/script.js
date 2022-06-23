@@ -72,7 +72,7 @@ paypal.style.display = "none";
 bitcoin.style.display = "none";
 
 //select the second child of the payment variable -by default, grab first children
-paymentMethod.children[1].setAttribute("selected", "selected");
+paymentMethod.children[1].setAttribute("selected", 'selected');
 
 //crete an event listener that hides payment methods when not selected but shows if selected 
 paymentMethod.addEventListener ("change", (e) =>{
@@ -80,11 +80,13 @@ paymentMethod.addEventListener ("change", (e) =>{
         creditCard.style.display = "block";
         paypal.style.display = "none";
         bitcoin.style.display = "none";
-    } else if (e.target.value === "paypal"){
+    } 
+    if (e.target.value === "paypal"){
         creditCard.style.display = "none";
         paypal.style.display = "block";
         bitcoin.style.display = "none";
-    } else if (e.target.value === "bitcoin"){
+    } 
+     if (e.target.value === "bitcoin"){
         creditCard.style.display = "none";
         paypal.style.display = "none";
         bitcoin.style.display = "block";
@@ -117,19 +119,10 @@ function validationPass (element){
   //helper function for name validation, to make sure a name is inserted using regex
 function nameValidation(){
     let nameValue = userName.value;
-    const nameIsValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);  
+    const nameIsValid = /^([\x00-\xFF]){1,30}$/.test(nameValue);  
     
     
-    /*
-    /^[a-zA-Z0-9_.-]*$/.test(nameElement.value);
-// /[a-zA-Z]*(?:\s|(?:\s?[:\/]\s?))\d+/
-// /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/
-// /^[a-zA-Z0-9_.-.*]*$/
-/^[a-zA-Z0-9:.,?!@]{3,15}[#$^]?$/
-/^[a-z ,.'-]+$/i/
 
-
-*/ 
 
 //Create an if/else statement.
     if (nameIsValid){
@@ -143,9 +136,7 @@ function nameValidation(){
 //helper function for the email validation
 function emailValidation(){
     let emailValue = email.value;
-    console.log(emailValue);
     const emailIsValid = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);  
-    console.log(emailIsValid);
     //Create an if/else statement.
     if (emailIsValid){
         validationPass(email);
@@ -211,20 +202,6 @@ function cvvValidator (){
     return cvvIsValid; 
 }
 
-// function paymentValidator (){
-//     if (paymentMethod.value = "credit-card"){
-//         if (creditCardValidator() && zipValidator() && cvvValidator()){
-//             return true;
-//         } else {
-//             return false;
-//         }
-//     }
-//     if (paymentMethod.value = "paypal" || "bitcoin"){
-//         return true
-//     } else {
-//         return false
-//     }  
-// };
 
 //focuses and blurs activities section for better access 
 let checkboxes = document.querySelectorAll("input[type = checkbox]");
@@ -249,19 +226,18 @@ form.addEventListener( "submit", (e) => {
     if (!activitiesBoxValidator()){
         e.preventDefault();
     };
-    if (!creditCardValidator()){
-        e.preventDefault
+    if (paymentMethod.value === "credit-card"){
+
+        if (!creditCardValidator()){
+            e.preventDefault
+        };
+        if (!zipValidator()){
+            e.preventDefault();
+        };
+        if (!cvvValidator()){
+            e.preventDefault();
+        };
     };
-    if (!zipValidator()){
-        e.preventDefault();
-    };
-    if (!cvvValidator()){
-        e.preventDefault();
-    };
-    // if (!paymentValidator()){
-    //     e.preventDefault
-    // }
-    
     
 
 });
