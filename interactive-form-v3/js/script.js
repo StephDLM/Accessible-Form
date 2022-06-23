@@ -56,14 +56,14 @@ activities.addEventListener ("change", (e) => {
           totalCost.innerHTML = ` Total: $${totalCostOfActivities}`;
         });
 
-//payment section
+//variables created for payment section
 const paymentMethod = document.querySelector("#payment")
 const creditCard = document.getElementById("credit-card");
 const paypal = document.getElementById("paypal");
 const bitcoin = document.getElementById("bitcoin");
 
-// paypal.style.display = "none";
-// bitcoin.style.display = "none";
+paypal.style.display = "none";
+bitcoin.style.display = "none";
 
 //select the second child of the payment variable -by default, grab first children
 paymentMethod.children[1].setAttribute("selected", "selected");
@@ -89,12 +89,13 @@ paymentMethod.addEventListener ("change", (e) =>{
 
 //validating each field. Create the constants to select each element input 
 const email = document.getElementById("email");
-const activitiesBox = document.getElementById("activities-box");
+// const activitiesBox = document.getElementById("activities-box");
 const cardNumber = document.getElementById("cc-num")
 const zipCode = document.getElementById("zip");
 const cvv = document.getElementById("cvv");
 const form = document.querySelector("form");
 
+//create functions to select the green and red images when input is valid or invalid
 function validationPass (element){
     element.parentElement.classList.add('valid');
     element.parentElement.classList.remove('not-valid');
@@ -108,7 +109,7 @@ function validationPass (element){
     
   };
 
-  //helper function for name validation 
+  //helper function for name validation, to make sure a name is inserted using regex
 function nameValidation(){
     let nameValue = userName.value;
     const nameIsValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);    
@@ -136,36 +137,32 @@ function emailValidation(){
     return emailIsValid; 
 }
 
-function emailValidation(){
-    let emailValue = email.value;
-    console.log(emailValue);
-    const emailIsValid = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);  
-    console.log(emailIsValid);
-    //Create an if/else statement.
-    if (emailIsValid){
-        validationPass(email);
-    } else{
-        validationFail(email);
-    };
-    return emailIsValid; 
-}
+// function emailValidation(){
+//     let emailValue = email.value;
+//     console.log(emailValue);
+//     const emailIsValid = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);  
+//     console.log(emailIsValid);
+//     if (emailIsValid){
+//         validationPass(email);
+//     } else{
+//         validationFail(email);
+//     };
+//     return emailIsValid; 
+// }
 
+//helper function to make sure at least one activity is chosen, using if/else statements
 function activitiesBoxValidator(){
-    const activitiesBoxIsValid = activitiesBox>0;
+    const selectBox = document.getElementById("activities-box");
+    const activitiesBoxIsValid = totalCostOfActivities>0;
     if (activitiesBoxIsValid){
-        activitiesBox.classList.add("valid");
-        activitiesBox.classList.remove("not-valid");
-        activitiesBox.lastElementChild.style.display = "none";
+        validationPass(selectBox)
     } else{
-        // validationFail(activitiesBox);
-        activitiesBox.classList.add("not-valid");
-        activitiesBox.classList.remove("valid");
-        activitiesBox.lastElementChild.style.display = "block";
+        validationFail(selectBox);
     };
     return activitiesBoxIsValid; 
 
 }
-
+//helper function to make sure credit card is 13 numbers 
 function creditCardValidator (){
     const cardIsValid = /^\d{13}\d?\d?\d?$/.test(cardNumber.value);  
     if (cardIsValid){
@@ -175,7 +172,7 @@ function creditCardValidator (){
     };
     return cardIsValid; 
 }
-
+//helper function to make sure zip is 5 numbers
 function zipValidator (){
     const zipIsValid = /^\d{5}$/.test(zipCode.value);  
     if (zipIsValid){
@@ -185,7 +182,7 @@ function zipValidator (){
     };
     return zipIsValid; 
 }
-
+//helper function to make sure CVV is 3-4 digits 
 function cvvValidator (){
     const cvvIsValid = /^[0-9]{3,4}$/.test(cvv.value);  
     if (cvvIsValid){
@@ -196,7 +193,7 @@ function cvvValidator (){
     return cvvIsValid; 
 }
 
-//focuses and blurs activities section for better access
+//focuses and blurs activities section for better access 
 const checkboxes = document.querySelectorAll("checkboxes");
 for (let i=0; i<checkboxes.length; i++){
     checkboxes.addEventListener ( "focus", (e) =>{
@@ -207,6 +204,7 @@ for (let i=0; i<checkboxes.length; i++){
     });
 }
 
+//add event listener to check for all fields that need to be filled to submit
 form.addEventListener( "submit", (e) => {
     if (!nameValidation()){
         e.preventDefault();
