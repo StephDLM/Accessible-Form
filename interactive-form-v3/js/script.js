@@ -11,8 +11,14 @@ const otherJobRole = document.getElementById('other-job-role');
 
 //Job role
 jobRole.addEventListener("change", (e) => {
-    if (e.target.value == "other")
-    otherJobRole.style.removeProperty("display");
+    if (e.target.value == "other"){
+        otherJobRole.style.removeProperty("display");
+    } else {
+        otherJobRole.style.display = "none";
+
+    }
+
+
 });
 
 //T-shirt
@@ -70,7 +76,6 @@ paymentMethod.children[1].setAttribute("selected", "selected");
 
 //crete an event listener that hides payment methods when not selected but shows if selected 
 paymentMethod.addEventListener ("change", (e) =>{
-    console.log(e.target.value)
     if (e.target.value === "credit-card") {
         creditCard.style.display = "block";
         paypal.style.display = "none";
@@ -84,7 +89,7 @@ paymentMethod.addEventListener ("change", (e) =>{
         paypal.style.display = "none";
         bitcoin.style.display = "block";
     }
-    })
+    });
 
 
 //validating each field. Create the constants to select each element input 
@@ -112,8 +117,21 @@ function validationPass (element){
   //helper function for name validation, to make sure a name is inserted using regex
 function nameValidation(){
     let nameValue = userName.value;
-    const nameIsValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);    
-    //Create an if/else statement.
+    const nameIsValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);  
+    
+    
+    /*
+    /^[a-zA-Z0-9_.-]*$/.test(nameElement.value);
+// /[a-zA-Z]*(?:\s|(?:\s?[:\/]\s?))\d+/
+// /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/
+// /^[a-zA-Z0-9_.-.*]*$/
+/^[a-zA-Z0-9:.,?!@]{3,15}[#$^]?$/
+/^[a-z ,.'-]+$/i/
+
+
+*/ 
+
+//Create an if/else statement.
     if (nameIsValid){
         validationPass(userName);
     } else{
@@ -184,7 +202,7 @@ function zipValidator (){
 }
 //helper function to make sure CVV is 3-4 digits 
 function cvvValidator (){
-    const cvvIsValid = /^[0-9]{3,4}$/.test(cvv.value);  
+    const cvvIsValid = /^[0-9]{3}$/.test(cvv.value);  
     if (cvvIsValid){
         validationPass(cvv);
     } else{
@@ -193,16 +211,32 @@ function cvvValidator (){
     return cvvIsValid; 
 }
 
+// function paymentValidator (){
+//     if (paymentMethod.value = "credit-card"){
+//         if (creditCardValidator() && zipValidator() && cvvValidator()){
+//             return true;
+//         } else {
+//             return false;
+//         }
+//     }
+//     if (paymentMethod.value = "paypal" || "bitcoin"){
+//         return true
+//     } else {
+//         return false
+//     }  
+// };
+
 //focuses and blurs activities section for better access 
-const checkboxes = document.querySelectorAll("checkboxes");
+let checkboxes = document.querySelectorAll("input[type = checkbox]");
+
 for (let i=0; i<checkboxes.length; i++){
-    checkboxes.addEventListener ( "focus", (e) =>{
-        checkboxes.parentElement.classList = "focus";
+    checkboxes[i].addEventListener( "focus", (e) =>{
+        checkboxes[i].parentElement.classList.add("focus");
     });
-    checkboxes.addEventListener ("blur", (e) =>{
-    checkboxes.parentElement.classList.remove("focus");
+    checkboxes[i].addEventListener("blur", (e) =>{
+        checkboxes[i].parentElement.classList.remove("focus");
     });
-}
+};
 
 //add event listener to check for all fields that need to be filled to submit
 form.addEventListener( "submit", (e) => {
@@ -224,6 +258,10 @@ form.addEventListener( "submit", (e) => {
     if (!cvvValidator()){
         e.preventDefault();
     };
+    // if (!paymentValidator()){
+    //     e.preventDefault
+    // }
+    
     
 
 });

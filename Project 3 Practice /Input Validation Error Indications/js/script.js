@@ -63,8 +63,10 @@ function validationFail (element){
 const nameValidator = () => {
 
   // Tests that there is at least a first name containing only letters, and allows for a middle and last name.
-  const nameIsValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameElement.value);
-
+  const nameIsValid =/^[a-zA-Z0-9_.-]*$/.test(nameElement.value);
+// /[a-zA-Z]*(?:\s|(?:\s?[:\/]\s?))\d+/
+// /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/
+// /^[a-zA-Z0-9_.-]*$/
   // YOUR CODE GOES HERE!!!
 
   // 3a. Create an if/else statement.
@@ -84,6 +86,7 @@ const emailValidator = () => {
 
   // Tests that email is validly formatted.
   const emailIsValid = /^[^@]+@[^@.]+\.[a-z]+$/i.test(email.value);
+  
 
   // YOUR CODE GOES HERE!!!
   if (emailIsValid == true){
