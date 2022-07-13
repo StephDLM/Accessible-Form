@@ -18,16 +18,13 @@ jobRole.addEventListener("change", (e) => {
 
     }
 
-
 });
 
-//T-shirt
+// create dessings for T-shirt
  const shirtDesign = document.getElementById("shirt-designs")
  const shirtColor = document.getElementById("color")
  const colorOption = shirtColor.children;
-    // console.log(shirtDesign);
-    // console.log(shirtColor);
-    // console.log(colorOption);
+
 //disable color field 
     shirtColor.disabled = true;
 //create an eventListener for shirt design 
@@ -46,7 +43,7 @@ shirtDesign.addEventListener("change", (e) => {
     }
 })
 
-//Register for Activities 
+//create variables for Register for Activities 
 const activities = document.getElementById("activities");
 const totalCost = document.getElementById("activities-cost"); 
 let totalCostOfActivities = 0;
@@ -146,18 +143,6 @@ function emailValidation(){
     return emailIsValid; 
 }
 
-// function emailValidation(){
-//     let emailValue = email.value;
-//     console.log(emailValue);
-//     const emailIsValid = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);  
-//     console.log(emailIsValid);
-//     if (emailIsValid){
-//         validationPass(email);
-//     } else{
-//         validationFail(email);
-//     };
-//     return emailIsValid; 
-// }
 
 //helper function to make sure at least one activity is chosen, using if/else statements
 function activitiesBoxValidator(){
